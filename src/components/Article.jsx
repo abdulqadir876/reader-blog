@@ -3,10 +3,13 @@ import { useParams } from 'react-router-dom'
 import { db } from "../firebase";
 import { getDocs, getDoc, collection, doc } from "firebase/firestore";
 import { useState, useEffect } from 'react';
+import Moment from 'react-moment';
 
 const Article = () => {
   const [blog, setBlog] = useState([]);
   const projectCollectionRef = collection(db, "blog");
+  
+  
 
 
   const {id} = useParams();
@@ -21,6 +24,7 @@ const Article = () => {
     setBlog(blogDetail.data());
   };
   console.log(blog);
+  // const dateToFormat = createdAt.toDate();
   return (
     <div className="w-[90%] mx-auto">
     <div className='grid grid-cols-6 mt-8'>
@@ -42,7 +46,12 @@ const Article = () => {
             <div className="flex items-center gap-3">
               <h1 className="text-lg tracking-tight">{blog.author}</h1>
               <span className="h-1 w-1 bg-gray-light rounded-full"></span>
-              <span className="text-[12px] text-gray">Apr 16, 2022</span>
+              <span className="text-[12px] text-gray">
+          
+              
+            <Moment format="DD M, YYYY">{blog.createdAt}</Moment>
+                {/* <Moment fromNow>{blog.createdAt.toDate()}</Moment> */}
+              </span>
             </div>
             <div>
               <span className="text-[13px] text-gray">

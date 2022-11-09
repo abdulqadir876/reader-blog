@@ -8,6 +8,7 @@ import {collection, getDocs, serverTimestamp} from 'firebase/firestore'
 const Blog = () => {
     const [blogs, setBlogs] = useState([]);
     const [fetchError, setFetchError] = useState(null)
+    const [isLoading, setIsLoading] = useState('Loading...');
 
     const blogCollectionRef = collection(db, 'blog')
 
@@ -16,6 +17,8 @@ const Blog = () => {
     const getProjects = async () => {
       const data = await getDocs(blogCollectionRef);
       setBlogs(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setIsLoading(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setIsLoading(true);
       console.log(blogs);
     };
     getProjects();
@@ -38,6 +41,9 @@ const Blog = () => {
         <hr className='text-light my-4'/>
         {/* Blogs */}
         <div>
+            <div className='flex justify-center items-center'>
+             {isLoading}
+            </div>
             {blogs.map((blog)=>{
                 return(
                     <div key={blog.id}>
