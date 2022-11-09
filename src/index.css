@@ -1,13 +1,18 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.btn{
+    @apply bg-light outline-none text-[12px] px-6 text-gray-dark py-2 rounded-full hover:ring-1 ring-gray-light ring-offset-2 transition-all ease-out
+}
+.btn-post{
+    @apply bg-light text-[12px] px-6 text-gray-dark py-2 rounded-full hover:ring-1 ring-gray-light ring-offset-2 transition-all ease-out
+}
+.btn-notice{
+    @apply bg-gray-light text-[12px] px-6 text-gray-dark py-2 rounded-lg
+
+}
+.btn-follow{
+    @apply border-2 border-gray-light  text-[12px] px-6 text-gray-dark py-2 rounded-full
+
 }
