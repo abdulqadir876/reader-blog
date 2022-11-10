@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Filter = () => {
+  const filterBtns = ['test','Reactjs','design','development', 'ux', 'marketing']
   return (
     <div className="md:grid grid-cols-3 gap-4 items-center">
       {/* Search */}
@@ -30,10 +32,14 @@ const Filter = () => {
         <div className="md:flex justify-between items-center gap-4 mt-4 md:mt-0">
           <span className="text-gray text-[14px] ">My Topics:</span>
           <div className="flex flex-end gap-2 mt-2 md:mt-0">
-            <button className="btn">Design</button>
-            <button className="btn">Development</button>
-            <button className="btn">UX</button>
-            <button className="btn">Marketing</button>
+         {/* {filterBtns.filter((item, index) => index % 4 === 0).map((item)=>(
+          <div>{item}</div>
+         ))} */}
+
+            {filterBtns.map((filterBtn)=>(
+              <Link to={`/tag/${filterBtn}`} className="btn capitalize">{filterBtn}</Link>
+            ))}
+  
           </div>
         </div>
       </div>
